@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Employée: {{ user.username }}{% endblock %}
+{% block title %}Mark{% endblock %}
 
 {% block heading_h1 %}
-    Employée: {{ user.username }}
+    Marque: {{ mark.name }}
 {% endblock %}
+
 {% block heading_btn %}
 
     <div class="btn-group" role="group">
-        <a href="{{ path('user_index') }}"
+        <a href="{{ path('mark_index') }}"
            class="btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-arrow-left fa-sm text-white-50"></i> retour à la liste
         </a>
-        <a href="{{ path('user_edit', {'id': user.id}) }}"
+        <a href="{{ path('mark_edit', {'id': mark.id}) }}"
            class="btn btn-sm btn-info shadow-sm"><i
                     class="fas fa-edit fa-sm text-white-50"></i> Modifier
         </a>
@@ -24,36 +25,31 @@
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-body">
+
             <table class="table">
                 <tbody>
                 <tr>
                     <th>Id</th>
-                    <td>{{ user.id }}</td>
+                    <td>{{ mark.id }}</td>
                 </tr>
                 <tr>
-                    <th>Nom d'utilisateur</th>
-                    <td>{{ user.username }}</td>
+                    <th>Name</th>
+                    <td>{{ mark.name }}</td>
                 </tr>
                 <tr>
-                    <th>Email</th>
-                    <td>{{ user.email }}</td>
+                    <th>Description</th>
+                    <td>{{ mark.description }}</td>
                 </tr>
                 <tr>
-                    <th>Activée</th>
-                    <td>{{ user.enabled ? 'Oui' : 'Non' }}</td>
-                </tr>
-                <tr>
-                    <th>Dernière connexion</th>
-                    <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
-                </tr>
-                <tr>
-                    <th>Roles</th>
-                    <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
+                    <th>Logo</th>
+                    <td>{{ mark.logo }}</td>
                 </tr>
                 </tbody>
             </table>
+
             <hr/>
-            {{ include('user/_delete_form.html.twig') }}
+
+            {{ include('mark/_delete_form.html.twig') }}
         </div>
     </div>
 {% endblock %}

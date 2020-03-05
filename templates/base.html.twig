@@ -45,7 +45,7 @@
             <!-- Begin Page Content -->
             {% block body %}
                 <div class="container-fluid">
-{#                    {{ knp_menu_render('AppBundle:Builder:mainMenu') }}#}
+                    {#                    {{ knp_menu_render('AppBundle:Builder:mainMenu') }}#}
                     <!-- Page Heading -->
                     {% block heading %}
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -131,11 +131,23 @@
 <script src="{{ asset('sb-admin-2/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
+
 <!-- Page level custom scripts -->
 <script src="{{ asset('sb-admin-2/js/demo/datatables-demo.js') }}"></script>
 {#<script src="{{ asset('sb-admin-2/') }}') }}"></script>#}
 
+<script src="{{ asset('sb-admin-2/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<!-- This locale is included to test usage of titleFormat when available: see tests/suites/options.js -->
+<script src="{{ asset('sb-admin-2/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js') }}"></script>
 
+<script>
+    $(document).ready(function () {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            language: 'fr'
+        });
+    });
+</script>
 {% block javascripts %}{% endblock %}
 
 </body>
