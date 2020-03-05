@@ -61,6 +61,16 @@ class Car
      */
     private $bodyType;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateAdded;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $user;
+
 
     public function getId(): ?int
     {
@@ -171,6 +181,30 @@ class Car
     public function setBodyType(?BodyType $bodyType): self
     {
         $this->bodyType = $bodyType;
+
+        return $this;
+    }
+
+    public function getDateAdded(): ?\DateTimeInterface
+    {
+        return $this->dateAdded;
+    }
+
+    public function setDateAdded(?\DateTimeInterface $dateAdded): self
+    {
+        $this->dateAdded = $dateAdded;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

@@ -36,6 +36,8 @@ class CarController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $car->setUser($this->getUser());
+            $car->setDateAdded(new \DateTime());
             $entityManager->persist($car);
             $entityManager->flush();
 
@@ -83,7 +85,7 @@ class CarController extends AbstractController
      */
     public function delete(Request $request, Car $car): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$car->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $car->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($car);
             $entityManager->flush();
