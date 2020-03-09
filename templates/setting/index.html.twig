@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Setting index{% endblock %}
+
+
+{% block heading_h1 %}
+liste des Setting{% endblock %}
+
+{% block heading_btn %}
+<a href="{{ path('setting_new') }}"
+   class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-plus fa-sm text-white-50"></i> Créer un nouveau
+</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Value</th>
+                                            <th>Description</th>
+                                            <th>DateUpdate</th>
+                                        <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for setting in settings %}
+                <tr>
+                                            <td>{{ setting.id }}</td>
+                                            <td>{{ setting.name }}</td>
+                                            <td>{{ setting.value }}</td>
+                                            <td>{{ setting.description }}</td>
+                                            <td>{{ setting.dateUpdate ? setting.dateUpdate|date('Y-m-d H:i:s') : '' }}</td>
+                                        <td>
+                        <a class="btn btn-info btn-circle btn-sm" href="{{ path('setting_show', {'id': setting.id}) }}"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-info btn-circle btn-sm" href="{{ path('setting_edit', {'id': setting.id}) }}"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

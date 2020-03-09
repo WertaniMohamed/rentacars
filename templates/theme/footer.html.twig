@@ -1,7 +1,12 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>
+                Copyright &copy; 2020
+                 {% if ("2020-01-01"|date("Y")) < "now"|date("Y") %}
+                    - {{ "now"|date("Y") }}
+                {% endif %}
+            </span>
         </div>
     </div>
 </footer>

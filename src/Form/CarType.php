@@ -5,11 +5,9 @@ namespace App\Form;
 use App\Entity\BodyType;
 use App\Entity\Car;
 use App\Entity\Fuel;
-use App\Entity\Mark;
 use App\Entity\Model;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
