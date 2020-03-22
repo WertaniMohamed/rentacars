@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contract index{% endblock %}
+
+
+{% block heading_h1 %}
+    liste des Contract{% endblock %}
+
+{% block heading_btn %}
+    <a href="{{ path('contract_new') }}"
+       class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> Créer un nouveau
+    </a>
+{% endblock %}
+
+{% block content %}
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Status</th>
+                        <th>Nombre De Jours</th>
+                        <th>Prolongation</th>
+                        <th>Date de locataion</th>
+                        <th>Frais options</th>
+                        <th>Frais Voiture</th>
+                        <th>Totale HT</th>
+                        <th>Totale TTC (TVA 19%)</th>
+                        <th>Remise</th>
+                        <th>Totale</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for contract in contracts %}
+                        <tr>
+                            <td>{{ contract.id }}</td>
+                            <td>
+                                <span class="badge text-white" style="background-color: {{ contract.state.color }}">{{ contract.state.name }} </span>
+                            </td>
+                            <td>{{ contract.days }}</td>
+                            <td>{{ contract.daysExtension }}</td>
+                            <td>{% set totalDays = contract.days  + contract.daysExtension %}
+                                {{ contract.dateDelivery ? contract.dateDelivery|date('Y-m-d') : '' }}
+                                / {{ contract.dateDelivery ? contract.dateDelivery|date_modify("+"~totalDays~" day")|date('Y-m-d') : '' }}
+                            </td>
+                            <td>{{ contract.optionsAmount }} </td>
+                            <td>{{ contract.carDaysAmount }}</td>
+                            <td>{{ contract.amountTotaleHt }}</td>
+                            <td>{{ contract.amountTotaleTtc }}</td>
+                            <td>{{ contract.discount }} / {{ contract.amountTotaleTtcAfterDiscount }}</td>
+                            <td>{{ contract.amountTotale }}</td>
+                            <td>
+                                <a class="btn btn-info btn-circle btn-sm"
+                                   href="{{ path('contract_show', {'id': contract.id}) }}"><i
+                                            class="fas fa-eye"></i></a>
+                                <a class="btn btn-info btn-circle btn-sm"
+                                   href="{{ path('contract_edit', {'id': contract.id}) }}"><i
+                                            class="fas fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="13">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

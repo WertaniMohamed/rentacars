@@ -27,11 +27,6 @@ class ContractOption
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=32, nullable=true)
-     */
-    private $color;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $active;
@@ -66,18 +61,6 @@ class ContractOption
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(?string $color): self
-    {
-        $this->color = $color;
 
         return $this;
     }

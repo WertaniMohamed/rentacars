@@ -78,6 +78,11 @@ class Car
      */
     private $contracts;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $priceByDay;
+
     public function __construct()
     {
         $this->contracts = new ArrayCollection();
@@ -248,6 +253,18 @@ class Car
                 $contract->setCar(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPriceByDay(): ?float
+    {
+        return $this->priceByDay;
+    }
+
+    public function setPriceByDay(float $priceByDay): self
+    {
+        $this->priceByDay = $priceByDay;
 
         return $this;
     }

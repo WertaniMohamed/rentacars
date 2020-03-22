@@ -120,11 +120,11 @@
 <script src="{{ asset('sb-admin-2/js/sb-admin-2.min.js') }}"></script>
 
 <!-- Page level plugins -->
-<script src="{{ asset('sb-admin-2/vendor/chart.js/Chart.min.js') }}"></script>
+{#<script src="{{ asset('sb-admin-2/vendor/chart.js/Chart.min.js') }}"></script>#}
 
 <!-- Page level custom scripts -->
-<script src="{{ asset('sb-admin-2/js/demo/chart-area-demo.js') }}"></script>
-<script src="{{ asset('sb-admin-2/js/demo/chart-pie-demo.js') }}"></script>
+{#<script src="{{ asset('sb-admin-2/js/demo/chart-area-demo.js') }}"></script>#}
+{#<script src="{{ asset('sb-admin-2/js/demo/chart-pie-demo.js') }}"></script>#}
 
 
 <!-- Page level plugins -->
@@ -139,7 +139,12 @@
 <script src="{{ asset('sb-admin-2/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <!-- This locale is included to test usage of titleFormat when available: see tests/suites/options.js -->
 <script src="{{ asset('sb-admin-2/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js') }}"></script>
+<script src="{{ asset('js/jquery.collection.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+{#<script src="{{ asset('js/fos_js_routes.json') }}"></script>#}
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
+<script src="{{ asset('js/main.js') }}"></script>
 <script>
     $(document).ready(function () {
         // you may need to change this code if you are not using Bootstrap Datepicker
@@ -148,6 +153,7 @@
         });
     });
 </script>
+
 {% block javascripts %}{% endblock %}
 
 </body>

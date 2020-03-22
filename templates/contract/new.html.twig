@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Contract{% endblock %}
+
+{% block heading_h1 %}
+    {{ 'Create new'|trans }} Contract{% endblock %}
+
+{% block heading_btn %}
+    <div class="btn-group" role="group">
+        <a class="btn btn-sm btn-primary shadow-sm" href="{{ path('contract_index') }}"><i
+                    class="fas fa-arrow-left fa-sm text-white-50"></i> {{ 'back to list'|trans }} </a>
+
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            {{ include('contract/_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

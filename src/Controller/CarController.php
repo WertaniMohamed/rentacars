@@ -51,10 +51,13 @@ class CarController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="car_show", methods={"GET"})
+     * @Route("/{id}", name="car_show", methods={"GET","POST"},options = { "expose" = true })
      */
-    public function show(Car $car): Response
+    public function show(Request $request, Car $car): Response
     {
+        if ($request->isXmlHttpRequest()) {
+            return $this->json(['id' => $car->getId(), 'price' => $car->getPriceByDay()]);
+        }
         return $this->render('car/show.html.twig', [
             'car' => $car,
         ]);

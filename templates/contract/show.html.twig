@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contract{% endblock %}
+
+{% block heading_h1 %}
+    Contract{% endblock %}
+
+{% block heading_btn %}
+
+    <div class="btn-group" role="group">
+
+        <a href="{{ path('contract_index') }}" class="btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-arrow-left fa-sm text-white-50"></i> {{ 'back to list'|trans }} </a>
+
+        <a href="{{ path('contract_edit', {'id': contract.id}) }}"
+           class="btn btn-sm btn-info shadow-sm">
+            <i class="fas fa-edit fa-sm text-white-50"></i> {{ 'edit'|trans }}
+        </a>
+
+    </div>
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ contract.id }}</td>
+                </tr>
+                <tr>
+                    <th>Days</th>
+                    <td>{{ contract.days }}</td>
+                </tr>
+                <tr>
+                    <th>DaysExtension</th>
+                    <td>{{ contract.daysExtension }}</td>
+                </tr>
+                <tr>
+                    <th>OptionsAmount</th>
+                    <td>{{ contract.optionsAmount }}</td>
+                </tr>
+                <tr>
+                    <th>DateDelivery</th>
+                    <td>{{ contract.dateDelivery ? contract.dateDelivery|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>AmountTotaleHt</th>
+                    <td>{{ contract.amountTotaleHt }}</td>
+                </tr>
+                <tr>
+                    <th>AmountTotaleTtc</th>
+                    <td>{{ contract.amountTotaleTtc }}</td>
+                </tr>
+                <tr>
+                    <th>Tva</th>
+                    <td>{{ contract.tva }}</td>
+                </tr>
+                <tr>
+                    <th>Discount</th>
+                    <td>{{ contract.discount }}</td>
+                </tr>
+                <tr>
+                    <th>CarDaysAmount</th>
+                    <td>{{ contract.carDaysAmount }}</td>
+                </tr>
+                <tr>
+                    <th>AmountTotaleTtcAfterDiscount</th>
+                    <td>{{ contract.amountTotaleTtcAfterDiscount }}</td>
+                </tr>
+                <tr>
+                    <th>AmountTotale</th>
+                    <td>{{ contract.amountTotale }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <hr/>
+            {{ include('contract/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
+

@@ -49,10 +49,13 @@ class ContractOptionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="contract_option_show", methods={"GET"})
+     * @Route("/{id}", name="contract_option_show", methods={"GET","POST"},options = { "expose" = true })
      */
-    public function show(ContractOption $contractOption): Response
+    public function show(Request $request, ContractOption $contractOption): Response
     {
+        if ($request->isXmlHttpRequest()) {
+            return $this->json(['id' => $contractOption->getId(), 'price' => $contractOption->getPrice()]);
+        }
         return $this->render('contract_option/show.html.twig', [
             'contract_option' => $contractOption,
         ]);
@@ -83,7 +86,7 @@ class ContractOptionController extends AbstractController
      */
     public function delete(Request $request, ContractOption $contractOption): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$contractOption->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $contractOption->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($contractOption);
             $entityManager->flush();

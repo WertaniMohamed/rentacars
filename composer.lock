@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fe473934a56b1ca2165fde2086341b5",
+    "content-hash": "8d5ca63385059094f714847b7cead104",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -371,6 +371,39 @@
                 "menu"
             ],
             "time": "2019-09-19T08:51:48+00:00"
+        },
+        {
+            "name": "ninsuo/symfony-collection",
+            "version": "2.1.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ninsuo/symfony-collection.git",
+                "reference": "231f790eee9ea2c3301ac45f5fe4fbb09ec4289c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ninsuo/symfony-collection/zipball/231f790eee9ea2c3301ac45f5fe4fbb09ec4289c",
+                "reference": "231f790eee9ea2c3301ac45f5fe4fbb09ec4289c",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "ScriptHandler.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alain Tiemblo",
+                    "email": "ninsuo@gmail.com"
+                }
+            ],
+            "description": "A jQuery plugin that manages adding, deleting and moving elements from a Symfony collection",
+            "time": "2020-01-13T12:54:48+00:00"
         },
         {
             "name": "psr/cache",
@@ -3683,57 +3716,57 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "1.11.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "8ef4935f5535bb4e967f30ee95dff358c7c0705e"
+                "reference": "9f417198a3674cdb84affc8fdedef8fb69435712"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/8ef4935f5535bb4e967f30ee95dff358c7c0705e",
-                "reference": "8ef4935f5535bb4e967f30ee95dff358c7c0705e",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/9f417198a3674cdb84affc8fdedef8fb69435712",
+                "reference": "9f417198a3674cdb84affc8fdedef8fb69435712",
                 "shasum": ""
             },
             "require": {
                 "behat/transliterator": "^1.2",
                 "ext-simplexml": "*",
-                "jms/metadata": "^2.0",
+                "jms/metadata": "^2.1",
                 "php": "^7.2",
-                "symfony/config": "^3.4 || ^4.0",
-                "symfony/dependency-injection": "^3.4 || ^4.0",
-                "symfony/event-dispatcher": "^3.4 || ^4.0",
-                "symfony/form": "^3.4.19 || ^4.0",
-                "symfony/http-foundation": "^3.4 || ^4.0",
-                "symfony/http-kernel": "^3.4 || ^4.0",
-                "symfony/property-access": "^3.4 || ^4.0",
-                "symfony/templating": "^3.4 || ^4.0"
+                "symfony/config": "^4.4 || ^5.0",
+                "symfony/dependency-injection": "^4.4 || ^5.0",
+                "symfony/event-dispatcher": "^4.4 || ^5.0",
+                "symfony/form": "^4.4 || ^5.0",
+                "symfony/http-foundation": "^4.4 || ^5.0",
+                "symfony/http-kernel": "^4.4 || ^5.0",
+                "symfony/property-access": "^4.4 || ^5.0",
+                "symfony/templating": "^4.4 || ^5.0"
             },
             "require-dev": {
                 "alcaeus/mongo-php-adapter": "^1.1",
-                "doctrine/doctrine-bundle": "^1.8",
+                "doctrine/doctrine-bundle": "^2.0",
                 "doctrine/mongodb-odm": "^1.2",
-                "doctrine/orm": "^2.5",
+                "doctrine/orm": "^2.7",
                 "ext-sqlite3": "*",
-                "knplabs/knp-gaufrette-bundle": "^0.6",
+                "knplabs/knp-gaufrette-bundle": "^0.7",
                 "matthiasnoback/symfony-dependency-injection-test": "^4.0",
                 "mikey179/vfsstream": "^1.6",
                 "oneup/flysystem-bundle": "^3.0",
-                "phpunit/phpunit": "^8.0",
-                "symfony/asset": "^3.4 || ^4.0",
-                "symfony/browser-kit": "^3.4 || ^4.0",
-                "symfony/css-selector": "^3.4 || ^4.0",
-                "symfony/doctrine-bridge": "^3.4 || ^4.0",
-                "symfony/dom-crawler": "^3.4 || ^4.0",
-                "symfony/framework-bundle": "^3.4.23 || ^4.2.4",
-                "symfony/phpunit-bridge": "^4.3",
-                "symfony/security-csrf": "^3.4 || ^4.0",
-                "symfony/translation": "^3.4 || ^4.0",
-                "symfony/twig-bridge": "^3.4 || ^4.0",
-                "symfony/twig-bundle": "^3.4 || ^4.0",
-                "symfony/validator": "^3.4 || ^4.0",
-                "symfony/var-dumper": "^3.4 || ^4.0",
-                "symfony/yaml": "^3.4 || ^4.0"
+                "phpunit/phpunit": "^8.4",
+                "symfony/asset": "^4.4 || ^5.0",
+                "symfony/browser-kit": "^4.4 || ^5.0",
+                "symfony/css-selector": "^4.4 || ^5.0",
+                "symfony/doctrine-bridge": "^4.4 || ^5.0",
+                "symfony/dom-crawler": "^4.4 || ^5.0",
+                "symfony/framework-bundle": "^4.4 || ^5.0",
+                "symfony/phpunit-bridge": "^4.3 || ^5.0",
+                "symfony/security-csrf": "^4.4 || ^5.0",
+                "symfony/translation": "^4.4 || ^5.0",
+                "symfony/twig-bridge": "^4.4 || ^5.0",
+                "symfony/twig-bundle": "^4.4 || ^5.0",
+                "symfony/validator": "^4.4 || ^5.0",
+                "symfony/var-dumper": "^4.4 || ^5.0",
+                "symfony/yaml": "^4.4 || ^5.0"
             },
             "suggest": {
                 "doctrine/doctrine-bundle": "For integration with Doctrine",
@@ -3745,18 +3778,17 @@
                 "ocramius/proxy-manager": "To use lazy services",
                 "oneup/flysystem-bundle": "For integration with Flysystem",
                 "symfony/asset": "To generate better links",
-                "symfony/yaml": "To use YAML mapping",
-                "willdurand/propel-eventdispatcher-bundle": "For integration with Propel"
+                "symfony/yaml": "To use YAML mapping"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11.x-dev"
+                    "dev-master": "1.13.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Vich\\UploaderBundle\\": ""
+                    "Vich\\UploaderBundle\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3775,7 +3807,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2019-11-21T14:09:47+00:00"
+            "time": "2019-12-07T13:02:37+00:00"
         },
         {
             "name": "willdurand/jsonp-callback-validator",

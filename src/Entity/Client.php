@@ -2,10 +2,16 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+ *
+ * @UniqueEntity("cin")
  */
 class Client
 {
@@ -17,7 +23,7 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",unique=true)
      */
     private $cin;
 
@@ -28,6 +34,7 @@ class Client
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email
      */
     private $email;
 
@@ -40,6 +47,52 @@ class Client
      * @ORM\Column(type="text", nullable=true)
      */
     private $documents;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Contract", mappedBy="clients")
+     */
+    private $contracts;
+
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $birthday;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $permi;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $permiDate;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nationality;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateAdd;
+
+    public function __construct()
+    {
+        $this->contracts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -102,6 +155,119 @@ class Client
     public function setDocuments(?string $documents): self
     {
         $this->documents = $documents;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contract[]
+     */
+    public function getContracts(): Collection
+    {
+        return $this->contracts;
+    }
+
+    public function addContract(Contract $contract): self
+    {
+        if (!$this->contracts->contains($contract)) {
+            $this->contracts[] = $contract;
+            $contract->addClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContract(Contract $contract): self
+    {
+        if ($this->contracts->contains($contract)) {
+            $this->contracts->removeElement($contract);
+            $contract->removeClient($this);
+        }
+
+        return $this;
+    }
+
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    public function getPermi(): ?string
+    {
+        return $this->permi;
+    }
+
+    public function setPermi(?string $permi): self
+    {
+        $this->permi = $permi;
+
+        return $this;
+    }
+
+    public function getPermiDate(): ?\DateTimeInterface
+    {
+        return $this->permiDate;
+    }
+
+    public function setPermiDate(?\DateTimeInterface $permiDate): self
+    {
+        $this->permiDate = $permiDate;
+
+        return $this;
+    }
+
+    public function getNationality(): ?string
+    {
+        return $this->nationality;
+    }
+
+    public function setNationality(?string $nationality): self
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDateAdd(): ?\DateTimeInterface
+    {
+        return $this->dateAdd;
+    }
+
+    public function setDateAdd(?\DateTimeInterface $dateAdd): self
+    {
+        $this->dateAdd = $dateAdd;
 
         return $this;
     }

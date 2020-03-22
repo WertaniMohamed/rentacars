@@ -85,10 +85,36 @@ class Contract
      */
     private $tva;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $discount;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Client", inversedBy="contracts")
+     */
+    private $clients;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $carDaysAmount;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $amountTotaleTtcAfterDiscount;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $amountTotale;
+
     public function __construct()
     {
         $this->history = new ArrayCollection();
         $this->options = new ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -281,6 +307,80 @@ class Contract
     public function setTva(?int $tva): self
     {
         $this->tva = $tva;
+
+        return $this;
+    }
+
+    public function getDiscount(): ?float
+    {
+        return $this->discount;
+    }
+
+    public function setDiscount(?float $discount): self
+    {
+        $this->discount = $discount;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Client[]
+     */
+    public function getClients(): Collection
+    {
+        return $this->clients;
+    }
+
+    public function addClient(Client $client): self
+    {
+        if (!$this->clients->contains($client)) {
+            $this->clients[] = $client;
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Client $client): self
+    {
+        if ($this->clients->contains($client)) {
+            $this->clients->removeElement($client);
+        }
+
+        return $this;
+    }
+
+    public function getCarDaysAmount(): ?float
+    {
+        return $this->carDaysAmount;
+    }
+
+    public function setCarDaysAmount(?float $carDaysAmount): self
+    {
+        $this->carDaysAmount = $carDaysAmount;
+
+        return $this;
+    }
+
+    public function getAmountTotaleTtcAfterDiscount(): ?float
+    {
+        return $this->amountTotaleTtcAfterDiscount;
+    }
+
+    public function setAmountTotaleTtcAfterDiscount(?float $amountTotaleTtcAfterDiscount): self
+    {
+        $this->amountTotaleTtcAfterDiscount = $amountTotaleTtcAfterDiscount;
+
+        return $this;
+    }
+
+    public function getAmountTotale(): ?float
+    {
+        return $this->amountTotale;
+    }
+
+    public function setAmountTotale(?float $amountTotale): self
+    {
+        $this->amountTotale = $amountTotale;
 
         return $this;
     }

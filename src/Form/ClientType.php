@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,12 +19,13 @@ class ClientType extends AbstractType
             ->add('email')
             ->add('phone')
             ->add('documents')
-            ->add('adresse')
-            ->add('permiNumber')
+            ->add('address')
+            ->add('birthday', BirthdayType::class)
+            ->add('permi')
             ->add('permiDate')
-            ->add('dataAdded')
-            ->add('user')
-        ;
+            ->add('nationality', CountryType::class, [
+                'data' => 'TN'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

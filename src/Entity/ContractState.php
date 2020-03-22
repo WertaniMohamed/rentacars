@@ -36,7 +36,7 @@ class ContractState
     /**
      * @ORM\Column(type="boolean")
      */
-    private $actvive;
+    private $active;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Contract", mappedBy="state")
@@ -89,14 +89,14 @@ class ContractState
         return $this;
     }
 
-    public function getActvive(): ?bool
+    public function getActive(): ?bool
     {
-        return $this->actvive;
+        return $this->active;
     }
 
-    public function setActvive(bool $actvive): self
+    public function setActive(bool $active): self
     {
-        $this->actvive = $actvive;
+        $this->active = $active;
 
         return $this;
     }

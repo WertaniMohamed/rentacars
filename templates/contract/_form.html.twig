@@ -1,0 +1,52 @@
+{% form_theme form 'form/my_custom_theme.html.twig' %}
+{#{% form_theme form.clients 'form/my_custom_collection_theme.html.twig' %}#}
+{#  {% form_theme form.clients ':bundles/FuzAppBundle:jquery.collection.html.twig' %}#}
+
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-sm-6 border-right">
+        {#        {{ form_widget(form.clients) }}#}
+        {% for client in form.clients %}
+            <h4>
+
+                {% if loop.index == 1 %}
+                    CLient Principal
+                    <hr/>
+                {% elseif loop.index == 2 %}
+                    <hr/>
+                    Chauffeur plus
+                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                            data-target="#collapseDriverplus"
+                            aria-expanded="false" aria-controls="collapseDriverplus">
+                        <i class="fas fa-plus-square"></i>
+                    </button>
+                    <hr/>
+                {% endif %}
+            </h4>
+            <div {{ loop.index == 2 ? 'class="collapse" id="collapseDriverplus" ':'id="collapseDriver"' }}>
+                {{ form_widget(client) }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-sm-6">{{ form_widget(form) }}</div>
+    <div class="col-sm-12">
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    </div>
+</div>
+{{ form_end(form) }}
+<style>
+    #contract_clients > div > .col-label-hide,
+    #contract_clients > div:nth-child(2) > .col-label-hide {
+        display: none;
+    }
+
+    @media (min-width: 576px) {
+
+        #contract_clients > div > .col-group-12,
+        #contract_clients > div:nth-child(2) > .col-group-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+</style>

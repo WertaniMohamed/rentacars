@@ -43,10 +43,6 @@ class ContractPlace
      */
     private $contracts;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $type;
 
     public function __construct()
     {
@@ -137,15 +133,4 @@ class ContractPlace
         return $this;
     }
 
-    public function getType(): ?bool
-    {
-        return $this->type;
-    }
-
-    public function setType(?bool $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
 }

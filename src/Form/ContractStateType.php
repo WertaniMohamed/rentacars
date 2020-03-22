@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\ContractState;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +14,9 @@ class ContractStateType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('color')
+            ->add('color', ColorType::class)
             ->add('description')
-            ->add('actvive')
-        ;
+            ->add('active');
     }
 
     public function configureOptions(OptionsResolver $resolver)

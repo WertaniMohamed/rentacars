@@ -56,16 +56,28 @@ Client{% endblock %}
                     <td>{{ client.adresse }}</td>
                 </tr>
                             <tr>
-                    <th>PermiNumber</th>
-                    <td>{{ client.permiNumber }}</td>
+                    <th>Address</th>
+                    <td>{{ client.address }}</td>
+                </tr>
+                            <tr>
+                    <th>Birthday</th>
+                    <td>{{ client.birthday ? client.birthday|date('Y-m-d') : '' }}</td>
+                </tr>
+                            <tr>
+                    <th>Permi</th>
+                    <td>{{ client.permi }}</td>
                 </tr>
                             <tr>
                     <th>PermiDate</th>
                     <td>{{ client.permiDate ? client.permiDate|date('Y-m-d') : '' }}</td>
                 </tr>
                             <tr>
-                    <th>DataAdded</th>
-                    <td>{{ client.dataAdded ? client.dataAdded|date('Y-m-d H:i:s') : '' }}</td>
+                    <th>Nationality</th>
+                    <td>{{ client.nationality }}</td>
+                </tr>
+                            <tr>
+                    <th>DateAdd</th>
+                    <td>{{ client.dateAdd ? client.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
                 </tr>
                         </tbody>
         </table>
